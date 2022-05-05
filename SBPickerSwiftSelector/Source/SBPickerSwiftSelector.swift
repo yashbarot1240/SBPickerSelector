@@ -79,8 +79,18 @@ public class SBPickerSwiftSelector: UIViewController {
         pickerView.dataSource = self
         
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        pickerView.backgroundColor = UIColor.white
-        datePickerView.backgroundColor = UIColor.white
+        if #available(iOS 13.0, *) {
+                   pickerView.backgroundColor = UIColor.systemBackground
+               } else {
+                   // Fallback on earlier versions
+                   pickerView.backgroundColor = UIColor.white
+               }
+        if #available(iOS 13.0, *) {
+               datePickerView.backgroundColor = UIColor.systemBackground
+           } else {
+               // Fallback on earlier versions
+               datePickerView.backgroundColor = UIColor.white
+           }
         setupPicker()
         
         cancelButton.title = NSLocalizedString("Cancel", comment: "")
